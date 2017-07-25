@@ -23,16 +23,19 @@
 
                             <h5 class="price-tag">{{product.price | currency}}</h5>
                             <button class="btn btn-primary" ng-hide="product.addedToCart"
-                                    ng-click="products.addToCart(product, $event)" >
-                                Add to Cart
+                                    ng-click="products.addToCart(product, $event)">
+                                &nbsp;Add to Cart&nbsp;
+                            </button>
+                            <button class="btn btn-success" ng-show="product.addedToCart">
+                                Product Added
                             </button>
 
-                            <button class="btn btn-primary" ng-hide="product.addedToFavorites"
+                            <button class="btn btn-primary favoriteItem" ng-hide="!logged_in || product.addedToFavorites"
                                     ng-click="products.addToFavorites(product)">
-                                Add to Favorites
+                                Favorite Item
                             </button>
-
-                            <button class="btn btn-success" ng-show="product.addedToCart || product.addedToFavorites">
+                            <button class="btn btn-success favoriteItem"
+                                    ng-show="logged_in && product.addedToFavorites">
                                 Product Added
                             </button>
 

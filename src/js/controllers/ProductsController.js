@@ -28,6 +28,10 @@ function ($scope, $location,  ProductService, CartService, $timeout, SyncService
 
     function addToFavorites(product) {
         SyncService.save(product);
+        product.addedToFavorites = true;
+        $timeout(function () {
+            product.addedToFavorites = false;
+        }, 700);
     }
     instance.addToFavorites = addToFavorites;
 }]);
