@@ -49,6 +49,10 @@ div.list-group-item .btn-primary:hover {
     margin-top: 30px;
 }
 
+button.favoriteItem {
+    margin: 5px 0;
+}
+
 /*** SPINNER/LOADING ***/
 
 .loading {

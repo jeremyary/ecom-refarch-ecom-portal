@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            <h1>All Products</h1>
+            <h1>Your Favorites<span ng-show="favorites.list.length === 0"> List is Empty!</span></h1>
             <div class="list-group">
 
-                <div ng-repeat="product in products.all | orderBy: 'name'" class="list-group-item featured-entry">
+                <div ng-repeat="product in favorites.list" class="list-group-item featured-entry">
 
                     <div class="row">
                         <div class="col-md-4">
@@ -20,22 +20,10 @@
                             </ul>
                         </div>
                         <div class="col-md-3 text-center">
-
                             <h5 class="price-tag">{{product.price | currency}}</h5>
-                            <button class="btn btn-primary" ng-hide="product.addedToCart"
-                                    ng-click="products.addToCart(product, $event)" >
-                                Add to Cart
+                            <button class="btn btn-primary" ng-click="favorites.remove(product)" >
+                                Remove
                             </button>
-
-                            <button class="btn btn-primary" ng-hide="product.addedToFavorites"
-                                    ng-click="products.addToFavorites(product)">
-                                Add to Favorites
-                            </button>
-
-                            <button class="btn btn-success" ng-show="product.addedToCart || product.addedToFavorites">
-                                Product Added
-                            </button>
-
                         </div>
                     </div>
                 </div>

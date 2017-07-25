@@ -1,6 +1,6 @@
 angular.module('myApp').controller('ProductsCtrl',
-        ['$scope', '$location', 'ProductService', 'CartService', '$timeout',
-function ($scope, $location,  ProductService, CartService, $timeout) {
+        ['$scope', '$location', 'ProductService', 'CartService', '$timeout', 'SyncService',
+function ($scope, $location,  ProductService, CartService, $timeout, SyncService) {
 
     var instance = this;
 
@@ -25,4 +25,9 @@ function ($scope, $location,  ProductService, CartService, $timeout) {
         }, 700);
     }
     instance.addToCart = addToCart;
+
+    function addToFavorites(product) {
+        SyncService.save(product);
+    }
+    instance.addToFavorites = addToFavorites;
 }]);

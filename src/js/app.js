@@ -12,8 +12,11 @@ angular.module('myApp', [
     'ngSanitize'
 ])
     .constant('$fh', require("fh-js-sdk"))
+    .constant('moment', require('moment'))
 
-    .run(function($rootScope, $interval, AuthService, SalesService) {
+    .run(function($rootScope, $interval, AuthService, SalesService, SyncService) {
+
+        SyncService.init();
 
         $rootScope.user = null;
         $rootScope.logged_in = false;
@@ -24,6 +27,7 @@ angular.module('myApp', [
                 $rootScope.user = user;
                 $rootScope.user.orders = data;
                 $rootScope.logged_in = true;
+                $rootScope.$emit('event.userAuthComplete');
             });
         });
 
@@ -48,6 +52,10 @@ angular.module('myApp', [
 
         $rootScope.$on('event.loadStop', function(event) {
             $rootScope.loading = false;
+        });
+
+        AuthService.login("bobdole", "password").then(function(data) {
+            $rootScope.$emit("event.userAuth", data);
         });
 
         $interval(function() {
@@ -105,6 +113,13 @@ angular.module('myApp', [
                 templateUrl: 'templates/account.html',
                 controller: 'AccountCtrl as account'
             })
+
+            .state('favorites', {
+                cache: false,
+                url: '/favorites',
+                templateUrl: 'templates/favorites.html',
+                controller: 'FavoritesCtrl as favorites'
+            });
 
             $urlRouterProvider.otherwise('/home');
     });

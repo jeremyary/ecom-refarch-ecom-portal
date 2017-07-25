@@ -22,6 +22,7 @@
     "grunt-newer": "~0.5.4",
     "grunt-rev": "~0.1.0",
     "load-grunt-tasks": "~0.2.1",
+    "moment": "^2.14.1",
     "time-grunt": "~0.2.10"
   },
   "devDependencies": {},

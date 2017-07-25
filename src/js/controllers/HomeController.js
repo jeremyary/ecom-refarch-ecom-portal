@@ -1,11 +1,15 @@
 angular.module('myApp').controller('HomeCtrl',
-    ['$scope', '$rootScope', '$location', '$timeout', 'ProductService', 'CartService', 'AuthService',
-function ($scope, $rootScope, $location, $timeout, ProductService, CartService, AuthService) {
+    ['$scope', '$rootScope', '$timeout', 'ProductService', 'CartService', 'SyncService',
+function ($scope, $rootScope, $timeout, ProductService, CartService, SyncService) {
 
     var instance = this;
 
     instance.show_featured = false;
     instance.addedToCart = false;
+
+    $rootScope.$on('sync', function(event, list) {
+        instance.list = list;
+    });
 
     ProductService.featured().then(
         function (data) {
@@ -31,12 +35,14 @@ function ($scope, $rootScope, $location, $timeout, ProductService, CartService, 
             product.addedToCart = false;
         }, 700);
     }
-
     instance.addToCart = addToCart;
 
-    function isAuthenticated() {
-        return AuthService.isAuthenticated();
+    function addToFavorites(product) {
+        SyncService.save(product);
+        product.addedToFavorites = true;
+        $timeout(function () {
+            product.addedToFavorites = false;
+        }, 700);
     }
-
-    instance.isAuthenticated = isAuthenticated;
+    instance.addToFavorites = addToFavorites;
 }]);

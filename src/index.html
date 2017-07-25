@@ -26,6 +26,7 @@
                         Cart<span ng-cloak ng-show="cartCount > 0"> ({{cartCount}})</span>
                     </a></li>
                     <li ng-hide="logged_in"><a ui-sref="account">Log In</a></li>
+                    <li ng-show="logged_in"><a ui-sref="favorites">Favorites</a></li>
                     <li ng-show="logged_in"><a ui-sref="account">Account</a></li>
                     <li ng-show="logged_in"><a ui-sref="logout({action: 'logout'})">Log Out</a></li>
                 </ul>
@@ -38,16 +39,16 @@
     <div ui-view></div>
 
     <script src="js/main.js"></script>
-    <script src="js/angular-loading-overlay.js"></script>
     <script src="js/controllers/AccountController.js"></script>
     <script src="js/controllers/CartController.js"></script>
     <script src="js/controllers/HomeController.js"></script>
     <script src="js/controllers/ProductsController.js"></script>
-    <script src="js/controllers/TabController.js"></script>
+    <script src="js/controllers/FavoritesController.js"></script>
     <script src="js/services/AuthService.js"></script>
     <script src="js/services/CartService.js"></script>
     <script src="js/services/ProductService.js"></script>
     <script src="js/services/SalesService.js"></script>
+    <script src="js/services/SyncService.js"></script>
 </body>
 
 </html>
