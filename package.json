@@ -5,7 +5,7 @@
   "main": "application.js",
   "scripts": {
     "install": "./node_modules/grunt-cli/bin/grunt browserify",
-    "start": "grunt"
+    "start": "node application.js"
   },
   "dependencies": {
     "angular": "~1.6.4",
