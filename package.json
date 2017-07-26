@@ -31,7 +31,7 @@
   },
   "scripts": {
     "install": "./node_modules/grunt-cli/bin/grunt browserify",
-    "start": "node application.js"
+    "start": "grunt"
   },
   "license": "Apache-2.0"
 }
