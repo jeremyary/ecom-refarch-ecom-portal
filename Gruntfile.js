@@ -23,7 +23,7 @@ module.exports = function (grunt) {
             // configurable paths
             app: 'src',
             url: '',
-            default_local_server_url: 'http://localhost:8001'
+            default_local_server_url: 'http://0.0.0.0:8001'
         },
 
         // Watches files for changes and runs tasks based on the changed files
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9003,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: '0.0.0.0',
                 livereload: 35731
             },
             livereload: {
