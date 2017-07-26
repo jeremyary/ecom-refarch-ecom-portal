@@ -54,10 +54,6 @@ angular.module('myApp', [
             $rootScope.loading = false;
         });
 
-        AuthService.login("bobdole", "password").then(function(data) {
-            $rootScope.$emit("event.userAuth", data);
-        });
-
         $interval(function() {
             if ($rootScope.user) {
                 AuthService.checkToken($rootScope.user.id).then(function(data) {
