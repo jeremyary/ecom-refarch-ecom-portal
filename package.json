@@ -30,7 +30,8 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "install": "./node_modules/grunt-cli/bin/grunt browserify"
+    "install": "./node_modules/grunt-cli/bin/grunt browserify",
+    "start": "node application.js"
   },
   "license": "Apache-2.0"
 }
