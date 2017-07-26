@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             js: {
-                files: ['<%= app.app %>/**/*.js', '!<%= app.app %>/js/main.js'],
+                files: ['<%= app.app %>/**/*.js', '!<%= app.app %>/main.js'],
                 tasks: ['browserify'],
                 options: {
                     livereload: 35731
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
         },
 
         browserify: {
-            'src/js/main.js': ['src/js/app.js']
+            'src/main.js': ['src/js/app.js']
         }
     });
 
